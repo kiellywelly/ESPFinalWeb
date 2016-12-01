@@ -1,6 +1,7 @@
 
 <?php include('header.php') ?>
 <?php 
+
 if (isset($_POST["newBuild"])) {
     $url = "http://localhost:9999/users/".$_SESSION["username"]."/builds/new";
     $response = Helper::requestPost($url, $_POST);

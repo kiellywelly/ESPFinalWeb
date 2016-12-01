@@ -4,7 +4,11 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once 'Helper.php';?>
+require_once 'Helper.php';
+require_once 'functions.php';
+   
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,43 +93,13 @@ require_once 'Helper.php';?>
 <?php } ?>
       </ul>
     </div>
-    <!-- End of navrigh -->
+    <!-- End of navright -->
 
 
     </div>
 </nav>
   <div id="main">
     <div class="content">
-   <?php 
-if (isset($_POST["register"])) {
-    $url = "http://localhost:9999/register";
-    $response = Helper::requestPost($url, $_POST);
-    $response = json_decode($response);
-    if ($response->status == 200) {
-        $_SESSION["username"] = $_POST["username"];
-        Helper::redirect("http://localhost/pcparts/home.php");
-    } else {
-        $rErrors = $response->body->errors;
-    }
-} elseif (isset($_POST["login"])) {
-    $url = "http://localhost:9999/login";
-    $response = Helper::requestPost($url, $_POST);
-    $response = json_decode($response);
-    echo $response->body;
-    if ($response->status == 200) {
-        $_SESSION["username"] = $response->body;
-        Helper::redirect("http://localhost/pcparts/home.php");
-    } else {
-        $lError = "Invalid Credentials";
-    }
-} elseif (isset($_GET["logout"])) {
-    // $response = Helper::requestGet("http://localhost:9999/logout");
-    session_unset();
-} elseif (isset($_GET["auth"])) {
-    $error = "Please Log in first.";
-}
-
-?>
   <script>
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
