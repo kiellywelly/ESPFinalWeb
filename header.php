@@ -48,11 +48,11 @@ require_once 'functions.php';
 
 
 <nav>
-  <div class="nav-wrapper">
+  <!-- <div class="nav-wrapper"> -->
 
     <div class="navleft">
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="home.php">Home</a></li>
         <li><a href="#">Parts</a></li>
         <li><a href="#">Builds</a></li>
 
@@ -61,19 +61,21 @@ require_once 'functions.php';
     <!-- End of navleft -->
 
     <div class="navright">
+
      <ul>
         
 <?php if (!isset($_SESSION["username"]) || empty($_SESSION["username"])) { ?>
 
 
         <li><a href="#"> <div id="wrap">
-             <div id="regbar">
+             <div id="regbar" style="clear:both;">
                <div id="navthing">
                  <a href="#" id="loginform">Login</a>
                  <div class="login">
                    <div class="arrow-up"></div>
                    <div class="formholder">
                      <div class="randompad">
+                       
                        <form action="" method="post" accept-charset="utf-8">
                           <input type="text" name="username_or_email" value="" placeholder="username or email">
                           <input type="password" name="password" value="" placeholder="password">
@@ -93,10 +95,11 @@ require_once 'functions.php';
 <?php } ?>
       </ul>
     </div>
+    </nav>
     <!-- End of navright -->
 
 
-    </div>
+    <!-- </div> -->
 </nav>
   <div id="main">
     <div class="content">
