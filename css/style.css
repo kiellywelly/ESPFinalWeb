@@ -162,7 +162,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    overflow: overlay;
+    overflow: hidden;
 }
 
 .navleft{
@@ -256,7 +256,6 @@ fieldset {
 .login {
   position: absolute;
   width: 350px;
-  right:1px;
   display: none;
 }
 
@@ -266,7 +265,7 @@ fieldset {
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-bottom: 15px solid #ECF0F1;
-  right: 10%;
+  left: 10%;
   position: absolute;
   top: -10px;
 }
