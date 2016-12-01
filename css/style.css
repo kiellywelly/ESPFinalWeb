@@ -1,0 +1,395 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	background: transparent;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	font-weight: normal;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote {
+	quotes: none;
+}
+blockquote:before, blockquote:after {
+	content: '';
+	content: none;
+}
+del {
+	text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a img {
+	border: none;
+}
+
+
+
+
+/* =Global
+-------------------------------------------------------------- */
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+ /*
+Ultramarine - #031424
+Indigo - #30415D
+Lightblue #8EAE8D
+Crimson Sky #CF6766
+*/
+
+body {
+    background-color: #031424;
+    color: #30415D;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight:300;
+    font-size:16px;
+    line-height:1.5;
+}
+
+
+/* Headings */
+h1,h2,h3,h4,h5,h6 {
+	line-height:1;
+	font-weight: 300;
+}
+a {
+    text-decoration:none;
+    color:rgb(100,150,200);
+}
+a:hover {
+    color:rgb(50,50,50);
+}
+
+
+
+/* =Template
+-------------------------------------------------------------- */
+#wrapper {
+    width:100%;
+    margin:0 auto;
+}
+
+#main {
+	background-color:#fff;
+	padding:30px 0;
+}
+.content {
+    width:80%;
+    max-width:1000px;
+    margin:0 auto;
+}
+
+
+/* =Top Bar
+-------------------------------------------------------------- */
+#top-bar {
+	background-color:rgb(100,150,200);
+}
+#top-bar a {
+	color:#fff;
+	font-size:14px;
+	text-transform:uppercase;
+	display:inline-block;
+	margin:0;
+	padding:10px;
+}
+#top-bar a:hover{
+	background-color:rgb(150,200,250);
+}
+span.all-labs,
+span.back-to-tutorial {
+	display:block;
+	width:50%;
+}
+span.all-labs {
+	float:left;
+	text-align:left;
+}
+span.back-to-tutorial {
+	float:right;
+	text-align:right;
+}
+
+/* =Header
+-------------------------------------------------------------- */
+header {
+	padding:30px 0;
+}
+#title {
+	width:100%;
+	text-align:center;
+}
+#title h1 {
+	color:#fff;
+	font-size: 30px;
+	margin-bottom:10px;
+}
+#title h2 {
+	color:rgb(200,200,200);
+	font-size:20px;
+
+}
+
+/*-------------------------Navigation*/
+.nav-wrapper{
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.navleft{
+  float:left;
+}
+
+.navright{
+  float:right;
+  padding-right:10px;
+}
+nav:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav {
+    background-color: #CF6766;
+    padding:10px 0;
+
+}
+nav ul {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+nav ul li {
+    display:inline-block;
+    position:relative;
+}
+
+/* sub navigation */
+nav li ul {    
+    background-color:rgb(225,75,75);
+    position:absolute;
+    left:0;
+    top:40px; /* make this equal to the line-height of the links (specified below) */
+    width:200px;
+}
+nav li li {
+    position:relative;
+    margin:0;
+    display:block;
+}
+nav li li ul {
+    position:absolute;
+    top:0;
+    left:200px; /* make this equal to the width of the sub nav above */
+    margin:0;
+}
+/* style all links */
+nav a {
+    line-height:40px;
+    padding:0 12px;
+    margin:0 12px;
+}
+nav a {
+    color:#fff;
+    text-decoration:none;
+    display:block;
+}
+nav a:hover,
+nav a:focus,
+nav a:active {
+    color:rgb(50,50,50);
+}
+
+/* style sub level links */
+nav li li a {
+    border-bottom:solid 1px rgb(200,50,50);
+    margin:0 10px;
+    padding:0;
+}
+nav li li:last-child a {
+    border-bottom:none;
+}
+
+
+/* hide sub menu links */
+ul.sub-menu {
+    display:none;
+}
+
+/*-------------------------------- Login Form*/
+
+
+fieldset {
+  border: none;
+}
+
+.login {
+  position: absolute;
+  width: 350px;
+  display: none;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 15px solid #ECF0F1;
+  left: 10%;
+  position: absolute;
+  top: -10px;
+}
+
+.parts {
+  background: #ecf0f1;
+  width: 100%;
+  margin: 20px;
+  border-radius: 5px;
+  padding: 20px 20px;
+}
+ /*
+Ultramarine - #031424
+Indigo - #30415D
+Lightblue #8EAE8D
+Crimson Sky #CF6766
+*/
+.partsright {
+  display: inline-block;
+  width: calc(100% - 150px - 40px);
+  margin-left: 20px;
+}
+
+.partsleft{
+  display: inline-block;
+  height: 150px;
+  float: left;
+}
+.partsleft img{
+  border: 2px solid #8EAE7D;
+  background-color: #FFFFFF;
+  max-width: 150px;
+}
+/* .parts p {
+  float: right;
+  margin: 20px;
+  text-align: left;
+}
+ */
+.formholder {
+  background: #ecf0f1;
+  width: 350px;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+
+.formholderbig {
+  width: 50%;
+}
+
+.formholdersmall {
+  width: 100%;
+}
+
+.formholder input[type="email"], .formholder input[type="password"] , .formholder input[type="text"] {
+  padding: 7px 5px;
+  margin: 10px 0;
+  width: 96%;
+  display: block;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+.formholder input[type="email"]:focus, .formholder input[type="password"]:focus, .formholder input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 1px 1px #1abc9c;
+}
+.formholder input[type="submit"] {
+  background: #1abc9c;
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+.formholder input[type="submit"]:hover {
+  background: #1bc6a4;
+}
+
+.randompad {
+  padding: 10px;
+}
+
+.green {
+  color: #1abc9c;
+}
+
+
+div#userdiv{
+  background-color: #fff;
+  float:right;
+}
+
+
+/* #Green Sea Flat Button
+==================================================*/
+.green-sea-flat-button {
+  position: relative;
+  vertical-align: top;
+  /* width: 100%; */
+  height: 50px;
+  padding: 0;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #16a085;
+  border: 0;
+  border-bottom: 2px solid #14947b;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #14947b;
+  box-shadow: inset 0 -2px #14947b;
+  padding: 5px 20px;
+  margin: 0 10px 0 0;
+}
+.green-sea-flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
