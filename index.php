@@ -1,6 +1,29 @@
-<?php include('header.php') ?>
+<?php
 
-      <div class="parts">
+require_once 'Helper.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_POST["register"])) {
+    $url = "http://localhost:9999/register";
+    $response = Helper::requestPost($url, $_POST);
+    $response = json_decode($response);
+    if ($response->status == 200) {
+        $_SESSION["username"] = $_POST["username"];
+        Helper::redirect("http://localhost/pcparts/home.php");
+    } else {
+        $rErrors = $response->body->errors;
+    }
+} 
+
+
+include('header.php');
+
+
+?>
+      <!-- <div class="parts">
         <div class="partsleft">
         <img src="https://cdn.pcpartpicker.com/static/forever/images/product/614a9c530cce56d1fafbc5ba97920ab1.256p.jpg"/>
         </div>
@@ -21,9 +44,8 @@
           </p>
         </div>
        
-        <!-- <p style="clear:both; position: relative;">Hey</p> -->
-      
-      </div>
+      </div>   -->    
+
       
       <div class="formholder" style="width: 50%; display:block; margin: auto;">
                      <div class="randompad">

@@ -1,0 +1,70 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 5rem;
+}
+form, input, h1 {
+	display: block;
+	margin: 10px;
+}
+.container {
+}
+form {
+	margin-top: 30px;
+}
+input {
+	font-size: 1rem;
+	padding: 4px;
+	color: #3f5395;
+	border: solid 1px #aabcff;
+}
+input:focus {
+	border-radius: 1px;
+	border: solid 2px #334588;
+}
+input[type=submit], button, a {
+	color: white;
+	border: solid #324487;
+	background-color: #334588;
+	width: 50%;
+	margin: 0 auto;
+}
+h1, h2, h3 {
+	font-family: sans-serif;
+	font-weight: 800;
+	font-size: 3rem;
+	color: #3f5395;
+	text-align: center;
+}
+h2 {
+	font-size: 2.5rem;
+}
+h3 {
+	font-size: 2rem;
+}
+a {
+	text-decoration: none;
+	padding: 4px;
+	font-family: sans-serif;
+}
+
+a.link {
+	background-color: transparent;
+	border: none;
+	font-weight: 600;
+	color: #334588;
+}
+
+a.link:hover {
+	text-decoration: underline;
+}
+
+.title {
+	font-size: 2.5rem;
+	text-align: center;
+	font-weight: 600;
+}
+
+.delete {
+}

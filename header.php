@@ -5,7 +5,25 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 require_once 'Helper.php';
-require_once 'functions.php';
+
+if (isset($_POST["login"])) {
+    $url = "http://localhost:9999/login";
+    $response = Helper::requestPost($url, $_POST);
+    $response = json_decode($response);
+    echo $response->body;
+    if ($response->status == 200) {
+        $_SESSION["username"] = $response->body;
+        Helper::redirect("http://localhost/pcparts/home.php");
+    } else {
+        $lError = "Invalid Credentials";
+    }
+} elseif (isset($_GET["logout"])) {
+    // $response = Helper::requestGet("http://localhost:9999/logout");
+    session_unset();
+} elseif (isset($_GET["auth"])) {
+    $error = "Please Log in first.";
+}
+
    
 
 ?>
@@ -53,8 +71,8 @@ require_once 'functions.php';
     <div class="navleft">
     <ul>
         <li><a href="home.php">Home</a></li>
-        <li><a href="#">Parts</a></li>
-        <li><a href="#">Builds</a></li>
+        <li><a href="browseParts.php">Parts</a></li>
+        <li><a href="allbuilds.php">Builds</a></li>
 
     </ul>
     </div> 
@@ -103,7 +121,7 @@ require_once 'functions.php';
 </nav>
   <div id="main">
     <div class="content">
-  <script>
+<!--   <script>
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
@@ -183,14 +201,14 @@ require_once 'functions.php';
       });
     }
   </script>
-<!--
+ --><!--
   Below we include the Login Button social plugin. This button uses
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 
 <div id="status">
-</div>
+</div> -->

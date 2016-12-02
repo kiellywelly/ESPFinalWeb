@@ -1,10 +1,14 @@
-<?php session_start();
+<?php 
 require_once 'Helper.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $isCurrent = true;
 $username = $_SESSION["username"];
 if (isset($_GET["u"])) {
     if ($_SESSION["username"] == $_GET["u"]) {
-        Helper::redirect("http://localhost:8000/profile.php");
+        Helper::redirect("http://localhost/pcparts/profile.php");
     }
     $isCurrent = false;
     $username = $_GET["u"];
@@ -22,37 +26,23 @@ if ($isCurrent) {
         $response = Helper::requestPost($url, $_POST);
         $response = json_decode($response);
         if ($response->status == 200) {
-            Helper::redirect("http://localhost:8000/profile.php");
+            Helper::redirect("http://localhost/pcparts/profile.php");
         }
     }
 }
 
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-    <link rel="stylesheet" href="app.css">
-</head>
-<body>
-    <div class="container">
-        <span>User: <?php echo $username; ?></span>
+
+include('header.php'); ?>
+
+
+        <h3>User: <?php echo $username; ?></h3>
         <br>
-        Builds:
         <div class="builds">
-            <?php
-            foreach ($user->builds as $build) {
-                echo "<a class='link' href='build.php"
-                ."?id={$build->id}'>{$build->name}</a> | ";
-                if ($isCurrent) {
-            ?>
-                <form class="delete" action='' method='post' accept-charset='utf-8'>
-                    <input type="hidden" name="id" value="<?php echo $build->id ?>">
-                    <input type='submit' name='deleteBuild' value='Delete'>
-                </form>
-             <?php } echo "<br>"; } ?>
-        </div>
-        <br>
-    </div>
-</body>
-</html>
+            <?php 
+                echo "Email address: " . $user->email ."<br>";
+                echo "Account Created at: " . $user->created ."<br>";
+                $numBuilds = count($user->builds);
+                echo "<a href='mybuilds.php'>Number of Builds: " . $numBuilds . "</a><br>";
+                ?>
+            
+<?php include('footer.php') ?>
