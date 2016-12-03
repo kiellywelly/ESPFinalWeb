@@ -30,7 +30,8 @@ class Helper {
     }
 
     public static function redirect($url) {
-        header('Location: ' . $url, true, 302);
+        $root = "";
+        header('Location: ' . $root . $url, true, 302);
         die();
     }
 

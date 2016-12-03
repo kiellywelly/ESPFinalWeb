@@ -18,7 +18,7 @@ if ($isCurrent) {
     $response = Helper::requestPost($url, $_POST);
     $response = json_decode($response);
     if ($response->status == 200) {
-        Helper::redirect("http://localhost:8000/build.php?id=".$_GET["id"]);
+        Helper::redirect("build.php?id=".$_GET["id"]);
     }
 }
 ?>

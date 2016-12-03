@@ -13,13 +13,13 @@ if (isset($_POST["login"])) {
     echo $response->body;
     if ($response->status == 200) {
         $_SESSION["username"] = $response->body;
-        Helper::redirect("http://localhost/pcparts/home.php");
+        Helper::redirect("home.php");
     } else {
         $lError = "Invalid Credentials";
     }
 } elseif (isset($_GET["logout"])) {
-    // $response = Helper::requestGet("http://localhost:9999/logout");
     session_unset();
+    Helper::redirect("index.php");
 } elseif (isset($_GET["auth"])) {
     $error = "Please Log in first.";
 }

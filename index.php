@@ -12,7 +12,7 @@ if (isset($_POST["register"])) {
     $response = json_decode($response);
     if ($response->status == 200) {
         $_SESSION["username"] = $_POST["username"];
-        Helper::redirect("http://localhost/pcparts/home.php");
+        Helper::redirect("home.php");
     } else {
         $rErrors = $response->body->errors;
     }
@@ -48,15 +48,15 @@ include('header.php');
 
       
       <div class="formholder" style="width: 50%; display:block; margin: auto;">
-                     <div class="randompad">
-                       <form action="" accept-charset="utf-8" method="post" id="registerForm">
-                          <input type="text" name="username" value="" placeholder="username">
-                          <input type="email" name="email" value="" placeholder="email">
-                          <input type="password" name="password" value="" placeholder="password">
-                          <input type="password" name="confirm_password" value="" placeholder="confirm password">
-                          <input type="submit" name="register" value="Register">
-                      </form>
-                     </div>
-                   </div>
+        <div class="randompad">
+          <form action="" accept-charset="utf-8" method="post" id="registerForm">
+            <input type="text" name="username" value="" placeholder="username">
+            <input type="email" name="email" value="" placeholder="email">
+            <input type="password" name="password" value="" placeholder="password">
+            <input type="password" name="confirm_password" value="" placeholder="confirm password">
+            <input type="submit" name="register" value="Register">
+          </form>
+        </div>
+      </div>
   
   <?php include('footer.php') ?>

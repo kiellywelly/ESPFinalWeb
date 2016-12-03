@@ -6,7 +6,7 @@ if (isset($_POST["newBuild"])) {
     $response = Helper::requestPost($url, $_POST);
     $response = json_decode($response);
     if ($response->status == 200) {
-        Helper::redirect("http://localhost/pcparts/build.php?id=".$response->body);
+        Helper::redirect("build.php?id=".$response->body);
 	}
 }
 
@@ -17,7 +17,7 @@ if (isset($_POST["login"])) {
     echo $response->body;
     if ($response->status == 200) {
         $_SESSION["username"] = $response->body;
-        Helper::redirect("http://localhost/pcparts/home.php");
+        Helper::redirect("home.php");
     } else {
         $lError = "Invalid Credentials";
     }

@@ -4,7 +4,6 @@ require_once 'Helper.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 if (isset($_GET["search"])) {
     $getUrl = "http://localhost:9999/parts?q={$_GET["query"]}&type={$_GET["type"]}";
 } else {
@@ -50,27 +49,20 @@ if (isset($_POST["addPart"])) {
     $response = json_decode($response);
     var_dump($response);
     if ($response->status == 200) {
-        Helper::redirect("http://localhost/pcparts/build.php?id=".$build);
+        Helper::redirect("build.php?user={$_SESSION["username"]}&id=".$build);
     }
 }
 
-
-
-
 include('header.php'); ?>
 
-
-
-
-
-
-
  <?php if (isset($_GET["build"])) {
-            echo "<a href='build.php?id={$build}'>Back to Build</a>";
+            echo "<a href='build.php?user={$_SESSION["username"]}&id={$build}'>Back to Build</a>";
         } ?>
         <form action="" method="get" accept-charset="utf-8">
-            <input type="hidden" name="build" value="<?php echo $build ?>">
-            <input type="text" name="query" value="<?php echo $_GET["query"]; ?>" placeholder="Search...">
+            <?php if (isset($_GET["build"])) {
+            echo "<input type='hidden' name='build' value={$build}>";
+            } ?>
+            <input type="text" name="query" value="<?php if (isset($_GET["query"])) {echo $_GET["query"];} ?>" placeholder="Search...">
             <select name="type">
                 <option value="0">All</option>
                 <?php foreach ($types as $type) {
@@ -79,6 +71,7 @@ include('header.php'); ?>
             </select>
             <input type='submit' name='search' value='Search'>
         </form>
+        <br>
         <h3><?php echo $res ?></h3>
             <?php foreach ($parts as $part) { ?>
 

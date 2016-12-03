@@ -45,7 +45,7 @@ if (isset($_POST["addPart"])) {
     $response = json_decode($response);
     var_dump($response);
     if ($response->status == 200) {
-        Helper::redirect("http://localhost:8000/build.php?id=".$build);
+        Helper::redirect("build.php?id=".$build);
     }
 }
 ?>

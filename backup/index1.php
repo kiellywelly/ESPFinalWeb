@@ -78,7 +78,7 @@ if (isset($_POST["register"])) {
     $response = json_decode($response);
     if ($response->status == 200) {
         $_SESSION["username"] = $_POST["username"];
-        Helper::redirect("http://localhost/pcparts/home.php");
+        Helper::redirect("home.php");
     } else {
         $rErrors = $response->body->errors;
     }
@@ -89,7 +89,7 @@ if (isset($_POST["register"])) {
     echo $response->body;
     if ($response->status == 200) {
         $_SESSION["username"] = $response->body;
-        Helper::redirect("http://localhost/pcparts/home.php");
+        Helper::redirect("home.php");
     } else {
         $lError = "Invalid Credentials";
     }

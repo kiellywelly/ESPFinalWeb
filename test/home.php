@@ -5,7 +5,7 @@ if (isset($_POST["newBuild"])) {
     $response = Helper::requestPost($url, $_POST);
     $response = json_decode($response);
     if ($response->status == 200) {
-        Helper::redirect("http://localhost:8000/build.php?id=".$response->body);
+        Helper::redirect("build.php?id=".$response->body);
     }
 }
 // ALL BUILDS

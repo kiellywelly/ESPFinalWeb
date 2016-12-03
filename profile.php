@@ -4,15 +4,19 @@ require_once 'Helper.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$isCurrent = true;
-$username = $_SESSION["username"];
-if (isset($_GET["u"])) {
-    if ($_SESSION["username"] == $_GET["u"]) {
-        Helper::redirect("http://localhost/pcparts/profile.php");
+$isCurrent = isset($_GET["username"]);
+if (isset($_GET["u"]) && isset($_SESSION["username"])) {
+    $isCurrent = $_SESSION["username"] == $_GET["u"];
+    if ($isCurrent) {
+        Helper::redirect("profile.php");
     }
-    $isCurrent = false;
-    $username = $_GET["u"];
 }
+if (isset($_GET["u"])) {
+    $username = $_GET["u"];
+} else if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+}
+
 $getUrl = "http://localhost:9999/users/{$username}";
 $response = Helper::requestGet($getUrl);
 $response = json_decode($response);
@@ -26,23 +30,39 @@ if ($isCurrent) {
         $response = Helper::requestPost($url, $_POST);
         $response = json_decode($response);
         if ($response->status == 200) {
-            Helper::redirect("http://localhost/pcparts/profile.php");
+            Helper::redirect("profile.php");
         }
     }
 }
 
-
 include('header.php'); ?>
 
+<h3>User: <?php echo $username; ?></h3>
+<br>
+<?php 
+echo "Email address: " . $user->email ."<br>";
+echo "Account Created at: " . $user->created ."<br>";
+$numBuilds = count($user->builds);
+echo "Number of Builds: " . $numBuilds . "<br>";
+?>
+<?php if ($numBuilds > 0) { ?>
+    Builds:
+    <div class="builds">
+        <?php
+        foreach ($user->builds as $build) {
+            echo "<div class='parts'>";
+            echo "<div class='partsright'>
+            <h2>".$build->name."</h2><br>";
+            echo "</div>";
 
-        <h3>User: <?php echo $username; ?></h3>
-        <br>
-        <div class="builds">
-            <?php 
-                echo "Email address: " . $user->email ."<br>";
-                echo "Account Created at: " . $user->created ."<br>";
-                $numBuilds = count($user->builds);
-                echo "<a href='mybuilds.php'>Number of Builds: " . $numBuilds . "</a><br>";
-                ?>
+            echo "<p style='alignment: right; float:right;'>";
+            echo "<a href='build.php?user={$username}&id={$build->id}'>
+                <input type='submit' value='View' class='green-sea-flat-button'>
+            </a>";
+            echo "</p></div>";
+        }
+        ?>
+    </div>
+<?php } ?>
             
 <?php include('footer.php') ?>
