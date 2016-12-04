@@ -41,7 +41,7 @@ include ('header.php');
             <?php
             foreach ($builds as $build) {
                 echo "
-                <div class='parts'>";
+                <div class='parts' style='margin-bottom: 15px;'>";
 
                 echo "<div class='partsright'>
                 <h2>".$build->name."</h2>";

@@ -4,8 +4,11 @@ require_once 'Helper.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+if(isset($_GET["user"])){
 $getUrl = "http://localhost:9999/users/{$_GET["user"]}/builds/". $_GET["id"];
+} else {
+    $getUrl = "http://localhost:9999/users/{$_SESSION["username"]}/builds/". $_GET["id"];
+}
 $response = Helper::requestGet($getUrl);
 $response = json_decode($response);
 if ($response->status == 200) {

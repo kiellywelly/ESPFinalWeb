@@ -13,8 +13,11 @@ if (isset($_GET["u"]) && isset($_SESSION["username"])) {
 }
 if (isset($_GET["u"])) {
     $username = $_GET["u"];
+    if($_GET["u"]!= $_SESSION["username"]){
+    $isCurrent = false;}
 } else if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
+    $isCurrent = true;
 }
 
 if(isset($_SESSION["username"])){
@@ -25,6 +28,8 @@ $response = json_decode($response);
 if ($response->status == 200) {
     $user = $response->body;
 }
+
+
 
 if ($isCurrent) {
     if (isset($_POST["deleteBuild"])) {
@@ -61,17 +66,31 @@ echo "Number of Builds: " . $numBuilds . "<br>";
     <h3>Builds</h3>
     <div class="builds">
         <?php
-        foreach ($user->builds as $build) {
-            echo "<div class='parts'>";
-            echo "<div class='partsright'>
-            <h2>".$build->name."</h2><br>";
-            echo "</div>";
+        foreach ($user->builds as $build) { ?>
+            <div class="parts" style="float:left; margin-bottom: 15px; ">
+                    <div style="float: left;">
+                        <h2><?php echo $build->name ?></h2>
+                            <?php echo $build->username ?>
+                    </div>
+                    <div style="alignment: right; float:right;">
+                        <?php if ($isCurrent) { ?>
 
-            echo "<p style='alignment: right; float:right;'>";
-            echo "<a href='build.php?user={$username}&id={$build->id}'>
-                <input type='submit' value='View' class='green-sea-flat-button'>
-            </a>";
-            echo "</p></div>";
+                        <form class="delete" action='' method='post' accept-charset='utf-8' style="display: inline;">
+                            <input type="hidden" name="id" value="<?php echo $build->id ?>">
+                            <input type='submit' name='deleteBuild' value='Delete' class='green-sea-flat-button'>
+                        </form>
+                        <?php } ?>
+                        <a href='build.php?user=<?php echo $username; ?>&id=<?php echo $build->id;?>'>
+                        <input type='submit' value='<?php if ($isCurrent) {
+                            echo "Edit Build"; }
+                            else { echo  "View"; } ?>' class='green-sea-flat-button' />
+                        </a>
+
+                        
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+        <?php
         }
         ?>
     </div>

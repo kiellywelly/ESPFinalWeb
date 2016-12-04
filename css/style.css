@@ -283,6 +283,7 @@ fieldset {
 .parts {
   background: #ecf0f1;
   width: 100%;
+  margin-bottom: 15px;
   border-radius: 5px;
   padding: 20px 20px;
 }
@@ -308,12 +309,6 @@ Crimson Sky #CF6766
   background-color: #FFFFFF;
   max-width: 150px;
 }
-/* .parts p {
-  float: right;
-  margin: 20px;
-  text-align: left;
-}
- */
 .formholder {
   background: #ecf0f1;
   width: 350px;

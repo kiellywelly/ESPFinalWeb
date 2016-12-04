@@ -77,7 +77,7 @@ include('header.php'); ?>
         <br>
         <?php foreach ($parts as $part) { ?>
 
-        <div class="parts" style="display:flex;">
+        <div class="parts" style="display:flex; margin-bottom: 15px;">
             <div class="partsleft">
                 <img src="<?php
 
