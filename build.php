@@ -41,12 +41,27 @@ if (isset($_POST["textBuild"])) {
     } else {
         $text = "Failed";
     }
+    alert($text);
 }
 
 
- include('header.php') ?>
+ include('header.php');
+
+  ?>
+<script type="text/javascript"> 
+
+function showDiv() {
+   document.getElementById('editName').style.display = "block";
+    document.getElementById("buildNameDisplay").style.display="none";
+    }
+</script>
+
+
 <?php if ($isCurrent) { ?>
-<div class="formholder randompad">
+<h2 id="buildNameDisplay" style="visibility: visible; display: inline;">
+<img src="images/edit.png" onclick="showDiv()" class="editIcon" />
+<?php echo $build->name ?></h2>
+<div class="formholder randompad" id="editName" style="display: none;">
     <form action='' method='post' accept-charset='utf-8'>
         <input type="text" name="name" value="<?php echo $build->name ?>" placeholder="name">
         <input type='submit' name='editBuild' value='Edit Name'>
@@ -55,10 +70,7 @@ if (isset($_POST["textBuild"])) {
 <?php } else { echo "<h2>{$build->name}</h2>";
 echo "<p>Built by: <a class='link' href='profile.php?u={$build->username}'>{$build->username}</a></p>"; } ?>
 <br>
-<form action='' method='post' accept-charset='utf-8'>
-    <input type='submit' name='textBuild' value='Send to Phone' class='green-sea-flat-button'>
-    <?php echo $text; ?>
-</form>
+
 <?php if (count($parts) > 0) { ?>
     <br>
     <p>Parts</p>
@@ -121,13 +133,24 @@ echo "<p>Built by: <a class='link' href='profile.php?u={$build->username}'>{$bui
         </div>
         <div style="clear:left;"></div>
     <?php } ?>
-<?php } ?>
+<?php } else  { ?>
+
+
+<h3>There are currently no added parts.</h2>
+
+ <?php   } ?>
 
 <?php
 if ($isCurrent) { ?>
-    <a href="browseParts.php?build=<?php echo $_GET["id"] ?>">Browse Parts</a>
+    <a href="browseParts.php?build=<?php echo $_GET["id"] ?>">
+         <input type='submit' name='addPartsBtn' value='Add Parts' class='green-sea-flat-button' style="display: inline;">
+    </a>
 <?php
 } ?>
+
+<form action='' method='post' accept-charset='utf-8' style="display: inline;">
+    <input type='submit' name='textBuild' value='Send to Phone' class='green-sea-flat-button'>
+</form>
 
 
 <?php include('footer.php') ?>

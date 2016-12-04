@@ -30,9 +30,9 @@ if ($response->status == 200) {
 include ('header.php');
 ?>
         <?php if (isset($_SESSION["username"])) {
-            echo "<form action='' method='post' accept-charset='utf-8'>
-                <input type='text' name='name' value='' placeholder='build_name'>
-                <input type='submit' name='newBuild' value='Create Build'>
+            echo "<form action='' method='post' accept-charset='utf-8' class='formholder' style='width: 100%;'>
+                <input type='text' name='name' value='' placeholder='Name' style='width: calc(100% - 235px); padding: 10px 5px; margin: 10px 10px; display: inline;'>
+                <input type='submit' name='newBuild' value='Create Build' style='display: inline; width: 200px; margin-right: 10px;'>
             </form><br>";
         } ?>
 

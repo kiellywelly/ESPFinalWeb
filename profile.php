@@ -17,6 +17,8 @@ if (isset($_GET["u"])) {
     $username = $_SESSION["username"];
 }
 
+if(isset($_SESSION["username"])){
+
 $getUrl = "http://localhost:9999/users/{$username}";
 $response = Helper::requestGet($getUrl);
 $response = json_decode($response);
@@ -35,9 +37,19 @@ if ($isCurrent) {
     }
 }
 
-include('header.php'); ?>
+}
 
-<h3>User: <?php echo $username; ?></h3>
+include('header.php'); 
+// if (!isset($_SESSION["username"]) && !isset($_GET["username"])){
+//     echo "<h3> Please login to view this page</h3>";
+// } else {
+
+?>
+
+
+
+
+<h2>User: <?php echo $username; ?></h2>
 <br>
 <?php 
 echo "Email address: " . $user->email ."<br>";
@@ -46,7 +58,7 @@ $numBuilds = count($user->builds);
 echo "Number of Builds: " . $numBuilds . "<br>";
 ?>
 <?php if ($numBuilds > 0) { ?>
-    Builds:
+    <h3>Builds</h3>
     <div class="builds">
         <?php
         foreach ($user->builds as $build) {
