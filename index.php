@@ -5,7 +5,7 @@ require_once 'Helper.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+$rErrors = [];
 if (isset($_POST["register"])) {
     $url = "http://localhost:9999/register";
     $response = Helper::requestPost($url, $_POST);
@@ -13,7 +13,7 @@ if (isset($_POST["register"])) {
     if ($response->status == 200) {
         $_SESSION["username"] = $_POST["username"];
         Helper::redirect("home.php");
-    } else {
+    } else if ($response->body != null) {
         $rErrors = $response->body->errors;
     }
 } 
@@ -46,7 +46,13 @@ include('header.php');
        
       </div>   -->    
 
-      
+      <div class="errors">
+        <ul>
+          <?php foreach ($rErrors as $error) {
+            echo "<li>{$error}</li>";
+          } ?>
+        </ul>
+      </div>
       <div class="formholder" style="width: 50%; display:block; margin: auto;">
         <div class="randompad">
           <form action="" accept-charset="utf-8" method="post" id="registerForm">

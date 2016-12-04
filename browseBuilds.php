@@ -16,7 +16,11 @@ if (isset($_POST["newBuild"])) {
     }
 }
 // ALL BUILDS
-$url = "http://localhost:9999/builds";
+$page = 0;
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+}
+$url = "http://localhost:9999/builds?page={$page}";
 $response = Helper::requestGet($url);
 $response = json_decode($response);
 if ($response->status == 200) {
@@ -52,7 +56,16 @@ include ('header.php');
             }
             ?>
         </div>
-        
+        <?php if (count($builds) == 25) { ?>
+        <a href="browseBuilds.php?<?php
+        $page = 0;
+        if (isset($_GET["page"])) {
+            $page = $_GET["page"];
+        }
+        $page+=1;
+        echo "page={$page}";
+        ?>">Next Page</a>
+        <?php } ?>
     </div>
 
   <?php include('footer.php') ?>

@@ -72,7 +72,7 @@ if (isset($_POST["login"])) {
     <ul>
         <li><a href="home.php">Home</a></li>
         <li><a href="browseParts.php">Parts</a></li>
-        <li><a href="allbuilds.php">Builds</a></li>
+        <li><a href="browseBuilds.php">Builds</a></li>
 
     </ul>
     </div> 
