@@ -31,16 +31,34 @@ if ($isCurrent) {
         Helper::redirect("build.php?user={$build->username}&id=".$_GET["id"]);
     }
 }
+$text="";
+if (isset($_POST["textBuild"])) {
+    $url = $getUrl."/sendText";
+    $response = Helper::requestPost($url, $_POST);
+    $response = json_decode($response);
+    if ($response->status == 200) {
+        $text = "Sent";
+    } else {
+        $text = "Failed";
+    }
+}
 
 
  include('header.php') ?>
 <?php if ($isCurrent) { ?>
-<form action='' method='post' accept-charset='utf-8'>
-    <input class="title" type="text" name="name" value="<?php echo $build->name ?>" placeholder="name">
-    <input type='submit' name='editBuild' value='Edit Name'>
-</form>
+<div class="formholder randompad">
+    <form action='' method='post' accept-charset='utf-8'>
+        <input type="text" name="name" value="<?php echo $build->name ?>" placeholder="name">
+        <input type='submit' name='editBuild' value='Edit Name'>
+    </form>
+</div>
 <?php } else { echo "<h2>{$build->name}</h2>";
 echo "<p>Built by: <a class='link' href='profile.php?u={$build->username}'>{$build->username}</a></p>"; } ?>
+<br>
+<form action='' method='post' accept-charset='utf-8'>
+    <input type='submit' name='textBuild' value='Send to Phone' class='green-sea-flat-button'>
+    <?php echo $text; ?>
+</form>
 <?php if (count($parts) > 0) { ?>
     <br>
     <p>Parts</p>

@@ -59,19 +59,21 @@ include('header.php'); ?>
  <?php if (isset($_GET["build"])) {
             echo "<a href='build.php?user={$_SESSION["username"]}&id={$build}'>Back to Build</a>";
         } ?>
-        <form action="" method="get" accept-charset="utf-8">
-            <?php if (isset($_GET["build"])) {
-            echo "<input type='hidden' name='build' value={$build}>";
-            } ?>
-            <input type="text" name="query" value="<?php if (isset($_GET["query"])) {echo $_GET["query"];} ?>" placeholder="Search...">
-            <select name="type">
-                <option value="0">All</option>
-                <?php foreach ($types as $type) {
-                    echo "<option value='{$type->id}'>{$type->name}</option>";
+        <div class="formholder randompad">
+            <form action="" method="get" accept-charset="utf-8">
+                <?php if (isset($_GET["build"])) {
+                echo "<input type='hidden' name='build' value={$build}>";
                 } ?>
-            </select>
-            <input type='submit' name='search' value='Search'>
-        </form>
+                <input type="text" name="query" value="<?php if (isset($_GET["query"])) {echo $_GET["query"];} ?>" placeholder="Search...">
+                <select name="type">
+                    <option value="0">All</option>
+                    <?php foreach ($types as $type) {
+                        echo "<option value='{$type->id}'>{$type->name}</option>";
+                    } ?>
+                </select>
+                <input type='submit' name='search' value='Search'>
+            </form>
+        </div>
         <br>
         <?php foreach ($parts as $part) { ?>
 

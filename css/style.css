@@ -321,7 +321,7 @@ Crimson Sky #CF6766
   width: 100%;
 }
 
-.formholder input[type="email"], .formholder input[type="password"] , .formholder input[type="text"] {
+.formholder input[type="email"], .formholder input[type="password"] , .formholder input[type="text"], .formholder input[type="tel"], .formholder select {
   padding: 7px 5px;
   margin: 10px 0;
   width: 96%;
@@ -334,7 +334,7 @@ Crimson Sky #CF6766
   -o-transition: 0.3s linear;
   transition: 0.3s linear;
 }
-.formholder input[type="email"]:focus, .formholder input[type="password"]:focus, .formholder input[type="text"]:focus {
+.formholder input[type="email"]:focus, .formholder input[type="password"]:focus, .formholder input[type="text"]:focus, .formholder input[type="tel"]:focus, .formholder select:focus {
   outline: none;
   box-shadow: 0 0 1px 1px #1abc9c;
 }

@@ -58,6 +58,7 @@ include('header.php');
           <form action="" accept-charset="utf-8" method="post" id="registerForm">
             <input type="text" name="username" value="" placeholder="username">
             <input type="email" name="email" value="" placeholder="email">
+            <input type="tel" name="phone" value="" placeholder="phone number">
             <input type="password" name="password" value="" placeholder="password">
             <input type="password" name="confirm_password" value="" placeholder="confirm password">
             <input type="submit" name="register" value="Register">
