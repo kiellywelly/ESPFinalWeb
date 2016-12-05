@@ -94,6 +94,9 @@ echo "Number of Builds: " . $numBuilds . "<br>";
         }
         ?>
     </div>
-<?php } ?>
+<?php } else{
+            echo "<h3>You have no builds. <a href='browseBuilds.php'>Create one.</a></h3>";
+
+}?>
             
 <?php include('footer.php') ?>

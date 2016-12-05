@@ -75,7 +75,12 @@ include('header.php'); ?>
             </form>
         </div>
         <br>
-        <?php foreach ($parts as $part) { ?>
+        <?php 
+        if (count($parts) == 0){
+            echo "<h3>0 results</h3>";
+        }
+
+        foreach ($parts as $part) { ?>
 
         <div class="parts" style="display:flex; margin-bottom: 15px;">
             <div class="partsleft">

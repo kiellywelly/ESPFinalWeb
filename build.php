@@ -64,10 +64,10 @@ function showDiv() {
 <h2 id="buildNameDisplay" style="visibility: visible; display: inline;">
 <img src="images/edit.png" onclick="showDiv()" class="editIcon" />
 <?php echo $build->name ?></h2>
-<div class="formholder randompad" id="editName" style="display: none;">
-    <form action='' method='post' accept-charset='utf-8'>
-        <input type="text" name="name" value="<?php echo $build->name ?>" placeholder="name">
-        <input type='submit' name='editBuild' value='Edit Name'>
+<div class="formholder randompad" id="editName" style="display: none; width: 100%">
+    <form action='' method='post' accept-charset='utf-8' style="width: 100%;">
+        <input type="text" name="name" value="<?php echo $build->name ?>" placeholder="name" style="width: calc(100% - 235px); display: inline; padding: 10px 5px; margin: 0px 5px;">
+        <input type='submit' name='editBuild' value='Edit Name' style="display: inline; width: 200px; margin: 0px 10px;">
     </form>
 </div>
 <?php } else { echo "<h2>{$build->name}</h2>";
@@ -76,7 +76,7 @@ echo "<p>Built by: <a class='link' href='profile.php?u={$build->username}'>{$bui
 
 <?php if (count($parts) > 0) { ?>
     <br>
-    <p>Parts</p>
+    <h3>Parts</h3>
     <?php foreach ($parts as $part) { ?>
         <?php $part = $part->part; ?>
         <div class="parts" style="display:flex;">
@@ -142,7 +142,7 @@ echo "<p>Built by: <a class='link' href='profile.php?u={$build->username}'>{$bui
 <h3>There are currently no added parts.</h2>
 
  <?php   } ?>
-
+<div style="margin-top:30px; float: right;"
 <?php
 if ($isCurrent) { ?>
     <a href="browseParts.php?build=<?php echo $_GET["id"] ?>">
@@ -154,6 +154,7 @@ if ($isCurrent) { ?>
 <form action='' method='post' accept-charset='utf-8' style="display: inline;">
     <input type='submit' name='textBuild' value='Send to Phone' class='green-sea-flat-button'>
 </form>
-
+</div>
+<div style="clear:both;"></div>
 
 <?php include('footer.php') ?>
